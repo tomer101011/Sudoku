@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Link to CSS file-->
+    <link rel="stylesheet" type="text/css" href="loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="createAccountStyle.css">
+    <link rel="stylesheet" type="text/css" href="helloUserStyle.css">
+    <link rel="stylesheet" type="text/css" href="forgotPasswordStyle.css">
+    <link rel="stylesheet" type="text/css" href="sudokuStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="UTF_8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sudoku Site</title>
+    <link rel="icon" href="pics/SodIcon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- ########################Log Form####################### -->
+    <div style="display: block;" id="logForm" class="container">
+        <div class="row form mx-auto">
+            <div class="col-6">
+                <img class="leftSideImg" title="Login" onclick="isGuest=false; login()" src="pics/loginPic.png" alt="">
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 style="text-align: center; cursor: default;">Members Login</h3>
+                    </div>
+                </div>
+                <div class="row rowLoginStyle">
+                    <div class="col-12">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="inputLogin">
+                                        <table>
+                                            <tr>
+                                                <td><i class="fa fa-user "></i></td>
+                                                <td><input id="userLog" type="text" class="loginText" placeholder="Enter user name" /></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p id='validNameLog'>You must enter a user name</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="inputLogin">
+                                        <table>
+                                            <tr>
+                                                <td><i class="fa fa-lock "></i></td>
+                                                <td><input id="passLog" type="password" class="loginText" placeholder="Enter password" /></td>
+                                                <td><img id="eyePassLog" class="showPass" title="Show password" onclick="showPassword('passLog','eyePassLog')" src="pics/showPassEye.png" alt=""></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p id='validPasswordLog'>You must enter a password</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button onclick="isGuest=false; login()" type="button" class=" log">Login</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a style="text-decoration: none;" href="#" onclick="change_form('logForm','forgetPasswordForm')" class="linkStyle">Forgot password?</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a style="text-decoration: none;" href="#" onclick="change_form('logForm','createAccountForm')" class="linkStyle">Create your account</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a style="text-decoration: none;" href="#" onclick="difficulty= 1; isGuest=true; timer(); arrangeBoard(); change_form('logForm','sudokuForm');" class="linkStyle">Login as guest</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- ########################Create Account####################### -->
+    <div style="display: none;" id="createAccountForm" class="container">
+        <div class="row form mx-auto">
+            <div class="col-6">
+                <img class="leftSideImg" title="Create account" onclick="createAccount()" src="pics/signUpPic.jpg" alt="">
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 style="text-align: center; cursor: default;">Sign up</h3>
+                    </div>
+                </div>
+                <div class="row rowLoginStyle">
+                    <div class="col-12">
+                        <table>
+                            <tr>
+                                <td class="createStyle">
+                                    <table>
+                                        <tr>
+                                            <td><i class="fa fa-user "></i></td>
+                                            <td><input id="userCreate" type="text" class="loginText createInput" placeholder="Your user name" /></td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p id='validNameCreate'>You must enter a user name</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="createStyle">
+                                    <table>
+                                        <tr>
+                                            <td><i class="fa fa-lock "></i></td>
+                                            <td><input id="passCreate" type="password" class="loginText createInput" placeholder="Password" /></td>
+                                            <td><img id="eyePassCreate" class="showPass" title="Show password" onclick="showPassword('passCreate','eyePassCreate')" src="pics/showPassEye.png" alt="" style="margin-left:5px"></td>
+                                        </tr>
+                                    </table>
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p id='validPasswordCreate'>You must enter a password</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="createStyle">
+                                    <table>
+                                        <tr>
+                                            <td><i class="fa fa-check "></i></td>
+                                            <td><input id="confirmCreate" type="password" class="loginText createInput" placeholder="Confirm password" /></td>
+                                            <td><img id="eyeConfirmCreate" class="showPass" title="Show password" onclick="showPassword('confirmCreate','eyeConfirmCreate')" src="pics/showPassEye.png" alt=""></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p id='validConfirmCreate'>You must confirm the password</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button onclick="createAccount()" type="button" class=" log">Create account</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a style="text-decoration: none;" href="#" onclick="change_form('createAccountForm','logForm')" class="linkStyle">Already a member?</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ########################Forget Password####################### -->
+    <div style="display: none;" id="forgetPasswordForm" class="container mx-auto">
+        <div class="row">
+            <div class="col-12">
+                <h3 style="cursor: default">Forgot password</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <img title="Change password" id="forgotPassPic" onclick="changePassword()" src="pics/forgotPasswordPic.png" alt="">
+            </div>
+        </div>
+        <div style="padding-top: 12px" class="row rowLoginStyle ">
+            <div class="col-12">
+                <table style="margin-left: 16px">
+                    <tr>
+                        <td>
+                            <div class="forgotStyle">
+                                <table>
+                                    <tr>
+                                        <td><i class="fa fa-user "></i></td>
+                                        <td><input id="userForgot" type="text" class="loginText forgotInput" placeholder="Your user name" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p id="validNameForgot">You must enter a user name</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="forgotStyle">
+                                <table>
+                                    <tr>
+                                        <td> <i class="fa fa-lock "></i></td>
+                                        <td><input id="passwordForgot" type="password" class="loginText forgotInput" placeholder="New password" /></td>
+                                        <td><img id="eyePassForgot" class="showPass" title="Show password" onclick="showPassword('passwordForgot','eyePassForgot')" src="pics/showPassEye.png" alt="" style="margin-left:4px"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p id="validPasswordForgot">You must enter a new password</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="forgotStyle">
+                                <table>
+                                    <tr>
+                                        <td> <i class="fa fa-check "></i></td>
+                                        <td><input id="confirmForgot" type="password" class="loginText forgotInput" placeholder="Confirm new password" /></td>
+                                        <td><img id="eyeConfirmForgot" class="showPass" title="Show password" onclick="showPassword('confirmForgot','eyeConfirmForgot')" src="pics/showPassEye.png" alt="" style="margin-right:10px"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p id="validConfirmForgot">You must confirm the new password</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="styleForgotButton" onclick="changePassword()" type="button" class="log">Change password</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a style="text-decoration: none;" href="#" onclick="change_form('forgetPasswordForm','logForm')" class="linkStyle">Back to login</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- ##########################Hello User######################### -->
+    <div style="display: none;" id="helloUserForm" class="container">
+        <div id="helloForm" class="row form mx-auto">
+            <div class="col-3">
+                <table id="tableStyle" class="table">
+                    <thead class="colorThead">
+                        <tr>
+                            <th scope="col">Place</th>
+                            <th scope="col">Player name</th>
+                            <th scope="col">Best time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-success">
+                            <td>1.</td>
+                            <td id="ldn1"></td>
+                            <td id="ldt1"></td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <td>2.</td>
+                            <td id="ldn2"></td>
+                            <td id="ldt2"></td>
+                        </tr>
+                        <tr class="table-warning">
+                            <td>3.</td>
+                            <td id="ldn3"></td>
+                            <td id="ldt3"></td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td id="ldn4"></td>
+                            <td id="ldt4"></td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td id="ldn5"></td>
+                            <td id="ldt5"></td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td id="ldn6"></td>
+                            <td id="ldt6"></td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
+                            <td id="ldn7"></td>
+                            <td id="ldt7"></td>
+                        </tr>
+                        <tr>
+                            <td>8.</td>
+                            <td id="ldn8"></td>
+                            <td id="ldt8"></td>
+                        </tr>
+                        <tr>
+                            <td>9.</td>
+                            <td id="ldn9"></td>
+                            <td id="ldt9"></td>
+                        </tr>
+                        <tr>
+                            <td>10.</td>
+                            <td id="ldn10"></td>
+                            <td id="ldt10"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <img id="helloUserPic" src="pics/helloUserPic.png" alt="">
+                    </div>
+                </div>
+                <div style="padding-top: 10px;" class="row">
+                    <div class="col-12 ">
+                        <h3 id='playerName' class="marginH"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="marginH">Choose difficulty level</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div style="margin-left: 150px;" class="col-12">
+                        <table>
+                            <tr>
+                                <td class="stylePaddingButtons"><button id="easy" onclick="difficulty=1; timer(); arrangeBoard(); change_form('helloUserForm','sudokuForm');" type="button" class="styleButton">Easy</button></td>
+                                <td class="stylePaddingButtons"><button id="medium" onclick="difficulty=2; timer(); arrangeBoard(); change_form('helloUserForm','sudokuForm');" type="button" class="styleButton">Medium</button></td>
+                                <td class="stylePaddingButtons"><button id="hard" onclick="difficulty=3; timer(); arrangeBoard(); change_form('helloUserForm','sudokuForm');" type="button" class="styleButton">Hard</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div style="padding-top: 10px;" class="row">
+                    <div class="col-12">
+                        <a style="text-decoration: none;" href="#" onclick="userBestTime='00:00:00'; change_form('helloUserForm','logForm')" class="linkStyle styleDisc">Disconnect</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ########################Sudoku Page####################### -->
+    <div style="display: none;" id="sudokuForm" class="container form mx-auto">
+        <div class="row">
+            <div class="col-12">
+                <h3 id="headerPuzzle">Here is the puzzle! Chosen difficulty: Easy</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="mx-auto">
+                    <tr>
+                        <td id="h" class="timerStyle">00</td>
+                        <td class="colonStyle">:</td>
+                        <td id="m" class="timerStyle">00</td>
+                        <td class="colonStyle">:</td>
+                        <td id="s" class="timerStyle">00</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="mx-auto">
+                    <tr>
+                        <td class="paddButtons">
+                            <button id="pauseContinue" onclick="pauseContinue()" type="button" class="sudokuButtonStyle">Pause</button>
+                        </td>
+                        <td>
+                            <button id="clear" onclick="clearBoard()" type="button" class="sudokuButtonStyle">Clear</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div style="display: none;" id="pausePic" class="row">
+            <div class="col-12">
+                <img class="pausePicStyle" title="Continue" onclick="pauseContinue()" src="pics/pauseIcon.png" alt="">
+            </div>
+        </div>
+        <div style="display: block;" id="sudokuDiv" class="row">
+            <div class="col-12">
+                <table width="500" class="mx-auto gameBorder">
+                    <tr>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c00" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c01" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c02" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c03" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c04" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c05" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c06" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c07" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c08" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c10" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c11" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c12" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c13" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c14" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c15" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c16" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c17" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c18" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                    </tr>
+                    <tr class="squareBottomBorder">
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c20" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c21" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c22" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c23" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c24" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c25" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c26" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c27" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c28" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c30" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c31" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c32" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c33" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c34" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c35" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c36" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c37" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c38" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c40" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c41" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c42" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c43" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c44" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c45" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c46" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c47" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c48" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                    </tr>
+                    <tr class="squareBottomBorder">
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c50" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c51" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c52" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c53" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c54" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c55" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c56" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c57" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c58" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c60" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c61" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c62" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c63" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c64" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c65" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c66" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c67" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c68" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c70" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c71" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c72" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c73" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c74" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c75" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c76" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c77" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c78" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c80" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c81" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c82" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c83" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c84" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle squareRightBorder">
+                            <input autocomplete="off" id="c85" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c86" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c87" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                        <td class="inputSodStyle">
+                            <input autocomplete="off" id="c88" class="inputStyle" readonly type="text" maxlength="1">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 ">
+                <p id="validCellError">Something is wrong! Please try again!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="mx-auto">
+                    <tr>
+                        <td class="paddButtons">
+                            <button id="newGame" onclick="arrangeNewGame()" type="button" class="sudokuButtonStyle">New Game</button>
+                        </td>
+                        <td class="paddButtons">
+                            <button id="checkGame" onclick="checkBoard()" type="button" class="sudokuButtonStyle">Check</button>
+                        </td>
+                        <td>
+                            <button id="userScreen" onclick="goBack()" type="button" class="sudokuButtonStyle"></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="sudokuScript.js"></script>
+    <script src="gameMatrices.js"></script>
+    <script src="timerScript.js"></script>
+</body>
+
+</html>

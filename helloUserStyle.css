@@ -1,0 +1,67 @@
+#helloUserPic {
+    height: 220px;
+    width: 220px;
+    margin-left: 260px;
+    margin-top: 50px;
+}
+
+#tableStyle {
+    width: 260px;
+    font-weight: bold;
+    border-collapse: collapse;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#helloForm {
+    width: 1000px;
+}
+
+.colorThead {
+    background-color: rgb(52, 36, 112);
+    color: white;
+}
+
+.stylePaddingButtons {
+    padding-right: 5px;
+}
+
+.styleButton {
+    font-weight: bold;
+    border-radius: 8px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border: none;
+    font-size: 20px;
+    transition: background-color, 0.2s;
+}
+
+#easy {
+    background-color: #28a745;
+}
+
+#medium {
+    background-color: #17a2b8;
+}
+
+#hard {
+    background-color: #ffc107;
+}
+
+#easy:hover,
+#medium:hover,
+#hard:hover {
+    background-color: #212529;
+}
+
+.marginH {
+    margin-left: 60px;
+    text-align: center;
+}
+
+.styleDisc {
+    margin-left: 330px;
+}

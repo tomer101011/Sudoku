@@ -1,0 +1,112 @@
+body {
+    background: linear-gradient(to right, #0099ff, #99ccff);
+}
+
+.form {
+    width: 800px;
+    margin-top: 40px;
+    margin-bottom: 100px;
+    margin-right: 60px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.leftSideImg {
+    height: 230px;
+    width: 230px;
+    transition: all 0.3s;
+}
+
+.leftSideImg:hover {
+    height: 260px;
+    width: 260px;
+    cursor: pointer;
+}
+
+.showPass {
+    margin-bottom: 5px;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+h3 {
+    text-align: center;
+}
+
+table,
+tr,
+td {
+    margin-left: 20px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.inputLogin {
+    border-radius: 30px;
+    background-color: #e6e6e6;
+    height: 50px;
+    width: 100%;
+    padding-top: 2px;
+    transition: border, 0.3s;
+}
+
+.inputLogin:hover {
+    border: 3px solid orange;
+}
+
+.rowLoginStyle {
+    padding-top: 10px;
+}
+
+.loginText {
+    border: none;
+    background: none;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.loginText:focus,
+button {
+    outline: none !important;
+}
+
+.log {
+    height: 50px;
+    width: 300px;
+    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+    border-radius: 30px;
+    background-color: #57b846;
+    border: none;
+    font-weight: bold;
+    font-size: 22px;
+    transition: background-color, 0.2s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.log:hover {
+    background-color: #212529;
+}
+
+.linkStyle {
+    font-size: 20px;
+    color: rgb(61, 68, 168);
+    transition: color, 0.2s;
+    text-align: center;
+    font-weight: bold;
+    font-family: Poppins-Bold;
+}
+
+.linkStyle:hover {
+    color: #57b846;
+}
+
+p {
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    display: none;
+}

@@ -1,0 +1,14 @@
+.createStyle {
+    border-bottom: 1px solid #999;
+    height: 50px;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.createInput {
+    width: 270px;
+}
+
+.createInput:hover::placeholder {
+    color: #57b846;
+}
